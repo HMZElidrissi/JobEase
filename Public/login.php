@@ -1,7 +1,3 @@
-<?php
-$connection = new Connection('localhost', 'situation', 'root', '');
-$pdo = $connection->connect();
-?>
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
@@ -33,7 +29,7 @@ $pdo = $connection->connect();
           <input type="submit" value="Login">
         </div>
         <span style="color:red;"></span>
-        <div class="signup-link">Not a member? <a href="/register.php">Signup now</a></div>
+        <div class="signup-link">Not a member? <a href="register.php">Signup now</a></div>
       </form>
     </div>
   </div>
