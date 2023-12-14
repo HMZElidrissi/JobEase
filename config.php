@@ -4,3 +4,4 @@ const DB_HOST = 'localhost';
 const DB_USER = 'root';
 const DB_PASS = '';
 const DB_NAME = 'db_jobease';
+const BASE_PATH = __DIR__;

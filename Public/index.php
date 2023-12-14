@@ -55,7 +55,7 @@
 							<a class="nav-link" href="#">EN</a>
 						</span>
 						<li class="nav-item">
-							<a class="nav-link" href="login.php">Login</a>
+							<a class="nav-link" href="Views/login.php">Login</a>
 						</li>
 					</ul>
 				</div>

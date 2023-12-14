@@ -1,0 +1,17 @@
+{
+    "name": "hamza/job-ease",
+    "autoload": {
+        "psr-4": {
+            "Http\\": "Http/",
+            "Core\\" : "Core/",
+            "Models\\" : "Models/"
+        }
+    },
+    "authors": [
+        {
+            "name": "HMZElidrissi",
+            "email": "hamza.ezzharelidrissi1@gmail.com"
+        }
+    ],
+    "require": {}
+}

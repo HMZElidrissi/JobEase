@@ -24,24 +24,24 @@
 
                 <ul class="sidebar_nav">
                     <li class="sidebar_item active" style="width: 100%;">
-                        <a href="dashboard.php" class="sidebar_link"> <img src="img/1. overview.svg" alt="icon">Overview</a>
+                        <a href="dashboard.php" class="sidebar_link"> <img src="dashboard/img/1. overview.svg" alt="icon">Overview</a>
                     </li>
                     <li class="sidebar_item">
-                        <a href="candidat.php" class="sidebar_link"> <img src="img/agents.svg" alt="icon">Candidat</a>
+                        <a href="candidat.php" class="sidebar_link"> <img src="dashboard/img/agents.svg" alt="icon">Candidat</a>
                     </li>
                     <li class="sidebar_item">
-                        <a href="offre.php" class="sidebar_link"> <img src="img/task.svg" alt="icon">Offre</a>
+                        <a href="offre.php" class="sidebar_link"> <img src="dashboard/img/task.svg" alt="icon">Offre</a>
                     </li>
                     <li class="sidebar_item">
-                        <a href="contact.php" class="sidebar_link"><img src="img/agent.svg" alt="icon">Contact</a>
+                        <a href="contact.php" class="sidebar_link"><img src="dashboard/img/agent.svg" alt="icon">Contact</a>
                     </li>
                     <li class="sidebar_item">
-                        <a href="#" class="sidebar_link"><img src="img/articles.svg" alt="icon">Articles</a>
+                        <a href="#" class="sidebar_link"><img src="dashboard/img/articles.svg" alt="icon">Articles</a>
                     </li>
 
                 </ul>
                 <div class="line"></div>
-                <a href="#" class="sidebar_link"><img src="img/settings.svg" alt="">Settings</a>
+                <a href="#" class="sidebar_link"><img src="dashboard/img/settings.svg" alt="">Settings</a>
 
 
             </div>
@@ -54,16 +54,16 @@
                 <div class="navbar  gap-4">
                     <div class="">
                         <input type="search" class="search " placeholder="Search">
-                        <img class="search_icon" src="img/search.svg" alt="iconicon">
+                        <img class="search_icon" src="dashboard/img/search.svg" alt="iconicon">
                     </div>
                     <!-- <img src="img/search.svg" alt="icon"> -->
-                    <img class="notification" src="img/new.svg" alt="icon">
+                    <img class="notification" src="dashboard/img/new.svg" alt="icon">
                     <div class="card new w-auto">
                         <div class="list-group list-group-light">
                             <div class="list-group-item px-3 d-flex justify-content-between align-items-center ">
-                                <p class="mt-auto">Notification</p><a href="#"><img src="img/settingsno.svg" alt="icon"></a>
+                                <p class="mt-auto">Notification</p><a href="#"><img src="dashboard/img/settingsno.svg" alt="icon"></a>
                             </div>
-                            <div class="list-group-item px-3 d-flex"><img src="img/notif.svg" alt="iconimage">
+                            <div class="list-group-item px-3 d-flex"><img src="dashboard/img/notif.svg" alt="iconimage">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text mb-3">Some quick example text to build on the card title and make up
@@ -71,7 +71,7 @@
                                     <small class="card-text">1  day ago</small>
                                 </div>
                             </div>
-                            <div class="list-group-item px-3 d-flex"><img src="img/notif.svg" alt="iconimage">
+                            <div class="list-group-item px-3 d-flex"><img src="dashboard/img/notif.svg" alt="iconimage">
                                 <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
                                     <p class="card-text mb-3">Some quick example text to build on the card title and make up
@@ -87,7 +87,7 @@
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-icon pe-md-0 position-relative" data-bs-toggle="dropdown">
-                                <img src="img/photo_admin.svg" alt="icon">
+                                <img src="dashboard/img/photo_admin.svg" alt="icon">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end position-absolute">
                                 <a class="dropdown-item" href="#">Profile</a>
@@ -128,8 +128,8 @@
                             </td>
                             <td class="f_position">Inactif</td>
                             <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
+                                <img class="accept_task w-50" src="dashboard/img/journal-check.svg" alt="icon" >
+                                <img class="delet_user w-50" src="dashboard/img/journal-x.svg" alt="icon">
                             </td>
                         </tr>
                         <tr class="freelancer">
@@ -150,8 +150,8 @@
                             </td>
                             <td class="f_position">Actif</td>
                             <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
+                                <img class="accept_task w-50" src="dashboard/img/journal-check.svg" alt="icon" >
+                                <img class="delet_user w-50" src="dashboard/img/journal-x.svg" alt="icon">
                             </td>
                         </tr>
                         <tr class="freelancer">
@@ -172,8 +172,8 @@
                             </td>
                             <td class="f_position">Inactif</td>
                             <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
+                                <img class="accept_task w-50" src="dashboard/img/journal-check.svg" alt="icon" >
+                                <img class="delet_user w-50" src="dashboard/img/journal-x.svg" alt="icon">
                             </td>
                         </tr>
                         <tr class="freelancer">
@@ -194,8 +194,8 @@
                             </td>
                             <td class="f_position">Actif</td>
                             <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
+                                <img class="accept_task w-50" src="dashboard/img/journal-check.svg" alt="icon" >
+                                <img class="delet_user w-50" src="dashboard/img/journal-x.svg" alt="icon">
                             </td>
                         </tr>
                         <tr class="freelancer">
@@ -216,8 +216,8 @@
                             </td>
                             <td class="f_position">Inactif</td>
                             <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
+                                <img class="accept_task w-50" src="dashboard/img/journal-check.svg" alt="icon" >
+                                <img class="delet_user w-50" src="dashboard/img/journal-x.svg" alt="icon">
                             </td>
                         </tr>
                         <tr class="freelancer">
@@ -238,8 +238,8 @@
                             </td>
                             <td class="f_position">Actif</td>
                             <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
+                                <img class="accept_task w-50" src="dashboard/img/journal-check.svg" alt="icon" >
+                                <img class="delet_user w-50" src="dashboard/img/journal-x.svg" alt="icon">
                             </td>
                         </tr>
                         <tr class="freelancer">
@@ -260,8 +260,8 @@
                             </td>
                             <td class="f_position">Actif</td>
                             <td class="">
-                                <img class="accept_task w-50" src="img/journal-check.svg" alt="icon" >
-                                <img class="delet_user w-50" src="img/journal-x.svg" alt="icon">
+                                <img class="accept_task w-50" src="dashboard/img/journal-check.svg" alt="icon" >
+                                <img class="delet_user w-50" src="dashboard/img/journal-x.svg" alt="icon">
                             </td>
                         </tr>
                     </tbody>

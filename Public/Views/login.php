@@ -1,3 +1,14 @@
+<?php
+
+require '../../config.php';
+require __DIR__ . '/../../vendor/autoload.php';
+
+use Http\Controllers\UserController;
+
+$controller = new UserController();
+$controller->login();
+
+?>
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
@@ -6,7 +17,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Form | CodingLab</title>
-  <link rel="stylesheet" href="styles/loginstyle.css">
+  <link rel="stylesheet" href="../styles/loginstyle.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
 </head>
 
