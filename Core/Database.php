@@ -5,43 +5,75 @@ namespace Core;
 use PDO;
 use PDOException;
 
+/**
+ * Database Singleton Class
+ */
 class Database
 {
-    private $host;
-    private $username;
-    private $password;
-    private $dbname;
+    private static $instance = null;
+    private $pdo;
     private $statement;
 
-    public function __construct()
+    /**
+     * The constructor is private to prevent initiation with outer code.
+     */
+    private function __construct()
     {
-        $this->host = DB_HOST;
-        $this->username = DB_USER;
-        $this->password = DB_PASS;
-        $this->dbname = DB_NAME;
+        $this->connect();
     }
 
-    public function connect()
+    /**
+     * The object is created from within the class itself only if the class has no instance.
+     *
+     * @return Database
+     */
+    public static function getInstance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    /**
+     * Connect to the database and set the error mode to Exception.
+     */
+    private function connect()
     {
         try {
-            $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->dbname;
+            $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME;
             $options = [
                 PDO::ATTR_PERSISTENT => true,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             ];
 
-            return new PDO($dsn, $this->username, $this->password, $options);
-
+            $this->pdo = new PDO($dsn, DB_USER, DB_PASS, $options);
         } catch (PDOException $e) {
+            // Consider logging this error instead of throwing
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }
     }
 
+    /**
+     * Prepare a statement with the given SQL.
+     *
+     * @param string $sql
+     * @return self
+     */
     public function query($sql)
     {
-        $this->statement = $this->connect()->prepare($sql);
+        $this->statement = $this->pdo->prepare($sql);
+        return $this;
     }
 
+    /**
+     * Bind a value to a named or question mark placeholder in the SQL statement.
+     *
+     * @param string $param
+     * @param mixed $value
+     * @param mixed $type
+     * @return self
+     */
     public function bind($param, $value, $type = null)
     {
         if (is_null($type)) {
@@ -61,29 +93,58 @@ class Database
         }
 
         $this->statement->bindValue($param, $value, $type);
+        return $this;
     }
 
+    /**
+     * Execute the prepared statement.
+     *
+     * @return bool
+     */
     public function execute()
     {
-        return $this->statement->execute();
+        try {
+            return $this->statement->execute();
+        } catch (PDOException $e) {
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
+        }
     }
 
-    // Get result set as an array of objects
+    /**
+     * Fetch all records from the executed statement.
+     *
+     * @return array
+     */
     public function fetchAllRecords()
     {
+        $this->execute();
         return $this->statement->fetchAll(PDO::FETCH_OBJ);
     }
 
-    // Get a single record as an object
+    /**
+     * Fetch a single record from the executed statement.
+     *
+     * @return object
+     */
     public function fetchSingleRecord()
     {
         $this->execute();
         return $this->statement->fetch(PDO::FETCH_OBJ);
     }
 
-    // Get the number of affected rows
+    /**
+     * Get the number of affected rows by the last SQL statement.
+     *
+     * @return int
+     */
     public function getRowCount()
     {
         return $this->statement->rowCount();
     }
+
 }
+
+// Usage example:
+// $db = Database::getInstance();
+// $db->query("SELECT * FROM users")->execute();
+// $users = $db->fetchAllRecords();
