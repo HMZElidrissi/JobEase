@@ -5,8 +5,8 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 use Http\Controllers\JobController;
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+/*error_reporting(E_ALL);
+ini_set('display_errors', 1);*/
 
 $controller = new JobController();
 $jobs = $controller->show();

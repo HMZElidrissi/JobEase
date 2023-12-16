@@ -35,12 +35,26 @@ class UserController {
 
             $user = $this->userModel->login($email, $password);
             if ($user) {
-                // SESSIONS
-                header('Location: dashboard.php');
-                /*header('Location: ../index.php');*/
+                session_start();
+                $_SESSION['user_id'] = $user->id;
+                $_SESSION['username'] = $user->username;
+                if ($user->role_id == 1) {
+                    $_SESSION['role'] = 'admin';
+                    header('Location: dashboard.php');
+                } else {
+                    $_SESSION['role'] = 'Candidate';
+                    header('Location: ../index.php');
+                }
             } else {
                 die('Login failed');
             }
         }
+    }
+
+    public function logout() {
+        session_start();
+        session_unset();
+        session_destroy();
+        header('Location: ../index.php');
     }
 }
