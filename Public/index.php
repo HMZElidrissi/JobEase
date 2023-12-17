@@ -8,7 +8,11 @@ use Http\Controllers\JobController;
 session_start();
 
 $controller = new JobController();
-$jobs = $controller->show();
+$jobs = $controller->showActive();
+$userController = new \Http\Controllers\UserController();
+$userController->logout();
+$applicationController = new \Http\Controllers\ApplicationController();
+$applicationController->apply();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +71,10 @@ $jobs = $controller->show();
 						</span>
 						<li class="nav-item">
                             <?php if (isset($_SESSION['user_id'])) : ?>
-                                <a class="nav-link" href="Views/login.php">Logout</a>
+                            <form action="" method="post">
+                                <input type="hidden" name="logout">
+                                <button name="logout" type="submit" class="btn btn-primary">Logout</button>
+                            </form>
                             <?php else : ?>
                                 <a class="nav-link" href="Views/login.php">Login</a>
 							<?php endif; ?>
@@ -119,7 +126,11 @@ $jobs = $controller->show();
 					<div class="postcard__preview-txt">
                         <?= $job->description ?>
                         <br>
-                        <a href="#"><i class="fas fa-play mr-2"></i>APPLY NOW</a>
+                        <form action="" method="post">
+                            <input type="hidden" name="job_id" value="<?= $job->id ?>">
+                            <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?>">
+                            <button type="submit" name="apply" class="btn btn-primary">APPLY NOW</button>
+                        </form>
                     </div>
 				</div>
 			</article>

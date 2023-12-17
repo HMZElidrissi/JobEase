@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../index.php');
+}
+require '../../config.php';
+require __DIR__ . '/../../vendor/autoload.php';
+
+use Http\Controllers\UserController;
+
+$controller = new UserController();
+$controller->logout();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

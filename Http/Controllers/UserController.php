@@ -11,6 +11,11 @@ class UserController {
         $this->userModel = new User();
     }
 
+    public function getUsernameById($id)
+    {
+        return $this->userModel->getUsernameById($id)->username;
+    }
+
     public function register() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
@@ -52,9 +57,11 @@ class UserController {
     }
 
     public function logout() {
-        session_start();
-        session_unset();
-        session_destroy();
-        header('Location: ../index.php');
+        if (isset($_POST['logout'])) {
+            session_start();
+            session_unset();
+            session_destroy();
+            header('Refresh: 0');
+        }
     }
 }

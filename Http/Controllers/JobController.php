@@ -18,6 +18,16 @@ class JobController
         return $this->jobModel->getAllJobs();
     }
 
+    public function showActive()
+    {
+        return $this->jobModel->getActiveJobs();
+    }
+
+    public function getJobTitleById($id)
+    {
+        return $this->jobModel->getJobTitleById($id)->title;
+    }
+
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {

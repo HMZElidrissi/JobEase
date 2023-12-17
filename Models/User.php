@@ -11,6 +11,13 @@ class User
         $this->db = Database::getInstance();
     }
 
+    public function getUsernameById($id)
+    {
+        $this->db->query("SELECT * FROM users WHERE id = :id");
+        $this->db->bind(':id', $id);
+        return $this->db->fetchSingleRecord();
+    }
+
     public function register($data)
     {
         $this->db->query('INSERT INTO users (username, email, password, role_id) VALUES (:username, :email, :password, :role_id)');

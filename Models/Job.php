@@ -20,6 +20,12 @@ class Job
         return $this->db->fetchAllRecords();
     }
 
+    public function getActiveJobs()
+    {
+        $this->db->query("SELECT * FROM jobs WHERE is_active = 1");
+        return $this->db->fetchAllRecords();
+    }
+
     public function addJob($data, $imageContent)
     {
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
@@ -58,6 +64,12 @@ class Job
         }
     }
 
+    public function getJobTitleById($id)
+    {
+        $this->db->query("SELECT title FROM jobs WHERE id = :id");
+        $this->db->bind(':id', $id);
+        return $this->db->fetchSingleRecord();
+    }
 
     public function deleteJob($id)
     {

@@ -43,7 +43,10 @@
                 <div class="dropdown-menu dropdown-menu-end position-absolute">
                     <a class="dropdown-item" href="#">Profile</a>
                     <a class="dropdown-item" href="#">Account Setting</a>
-                    <a class="dropdown-item" href="/PeoplePerTask/project/pages/index.html">Log out</a>
+                    <form action="" method="post">
+                        <input type="hidden" name="logout">
+                        <button name="logout" type="submit" class="dropdown-item">Logout</button>
+                    </form>
                 </div>
             </li>
         </ul>
