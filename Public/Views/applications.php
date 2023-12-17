@@ -11,8 +11,10 @@ use Http\Controllers\ApplicationController;
 ini_set('display_errors', 1);*/
 
 $controller = new ApplicationController();
-$userController = new \Http\Controllers\UserController();
-$userController->logout();
+if (isset($_POST['logout'])) {
+    $userController = new \Http\Controllers\UserController();
+    $userController->logout();
+}
 $jobController = new \Http\Controllers\JobController();
 $applications = $controller->show();
 $controller->approve();

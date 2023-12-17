@@ -9,8 +9,10 @@ session_start();
 
 $controller = new JobController();
 $jobs = $controller->showActive();
-$userController = new \Http\Controllers\UserController();
-$userController->logout();
+if (isset($_POST['logout'])) {
+    $userController = new \Http\Controllers\UserController();
+    $userController->logout();
+}
 $applicationController = new \Http\Controllers\ApplicationController();
 $applicationController->apply();
 ?>
@@ -85,7 +87,7 @@ $applicationController->apply();
 		</nav>
 	</header>
 	<section class="search" >
-		<h2><?php if (isset($_SESSION['user_id'])){ echo "Welcome " . $_SESSION['username']; }?>, Find Your Dream Job</h2>
+		<h2>Find Your Dream Job</h2>
 		<form  action="#" method="get" class="form-inline">
 			<div class="form-group mb-2">
 				<input type="text" id="keywords" placeholder="Keywords">
@@ -128,7 +130,6 @@ $applicationController->apply();
                         <br>
                         <form action="" method="post">
                             <input type="hidden" name="job_id" value="<?= $job->id ?>">
-                            <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?>">
                             <button type="submit" name="apply" class="btn btn-primary">APPLY NOW</button>
                         </form>
                     </div>
