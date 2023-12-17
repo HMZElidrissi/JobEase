@@ -89,7 +89,7 @@ $jobs = $controller->show();
 			<div class="form-group mx-sm-3 mb-2">
 				<input type="text" name="company" placeholder="Company">
 			</div>
-			<button type="submit" class="btn btn-primary mb-2">Search</button>
+            <button type="button" id="searchBtn" class="btn btn-primary mb-2">Search</button>
 		</form>
 	</section>
 
@@ -130,9 +130,32 @@ $jobs = $controller->show();
 	<footer>
 		<p>© 2023 JobEase </p>
 	</footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#searchBtn').click(function () {
+                var keywords = $('input[name="keywords"]').val();
+                var location = $('input[name="location"]').val();
+                var company = $('input[name="company"]').val();
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'ajax_search.php',
+                    data: {
+                        keywords: keywords,
+                        location: location,
+                        company: company
+                    },
+                    success: function (data) {
+                        $('.container.py-2').html(data);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 </html>

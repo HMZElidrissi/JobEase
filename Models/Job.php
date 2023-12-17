@@ -65,4 +65,14 @@ class Job
         $this->db->bind(':id', $id);
         return $this->db->execute();
     }
+
+    public function searchJobs($params)
+    {
+        $this->db->query("SELECT * FROM jobs WHERE description LIKE :keywords OR location LIKE :location OR company LIKE :company");
+        $this->db->bind(':keywords', '%' . $params['keywords'] . '%');
+        $this->db->bind(':location', '%' . $params['location'] . '%');
+        $this->db->bind(':company', '%' . $params['company'] . '%');
+
+        return $this->db->fetchAllRecords();
+    }
 }

@@ -69,4 +69,9 @@ class JobController
             header("Refresh: 0");
         }
     }
+
+    public function search($params)
+    {
+        return $this->jobModel->searchJobs($params);
+    }
 }
