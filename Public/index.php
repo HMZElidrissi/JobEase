@@ -81,13 +81,13 @@ $jobs = $controller->show();
 		<h2><?php if (isset($_SESSION['user_id'])){ echo "Welcome " . $_SESSION['username']; }?>, Find Your Dream Job</h2>
 		<form  action="#" method="get" class="form-inline">
 			<div class="form-group mb-2">
-				<input type="text" name="keywords" placeholder="Keywords">
+				<input type="text" id="keywords" placeholder="Keywords">
 			</div>
 			<div class="form-group mx-sm-3 mb-2">
-				<input type="text" name="location" placeholder="Location">
+				<input type="text" id="location" placeholder="Location">
 			</div>
 			<div class="form-group mx-sm-3 mb-2">
-				<input type="text" name="company" placeholder="Company">
+				<input type="text" id="company" placeholder="Company">
 			</div>
             <button type="button" id="searchBtn" class="btn btn-primary mb-2">Search</button>
 		</form>
@@ -96,7 +96,7 @@ $jobs = $controller->show();
 	<!--------------------------  card  --------------------->
 	<section class="light">
 		<h2 class="text-center py-3">Latest Job Listings</h2>
-		<div class="container py-2">
+		<div class="container py-2" id="results">
             <?php foreach ($jobs as $job): ?>
 			<article class="postcard light green">
 				<a class="postcard__img_link" href="#">
@@ -136,9 +136,9 @@ $jobs = $controller->show();
     <script>
         $(document).ready(function () {
             $('#searchBtn').click(function () {
-                var keywords = $('input[name="keywords"]').val();
-                var location = $('input[name="location"]').val();
-                var company = $('input[name="company"]').val();
+                var keywords = $('#keywords').val();
+                var location = $('#location').val();
+                var company = $('#company').val();
 
                 $.ajax({
                     type: 'GET',
@@ -149,7 +149,7 @@ $jobs = $controller->show();
                         company: company
                     },
                     success: function (data) {
-                        $('.container.py-2').html(data);
+                        $('#results').html(data);
                     }
                 });
             });
