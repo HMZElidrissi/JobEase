@@ -1,17 +1,17 @@
 {
-    "name": "hamza/job-ease",
+    "name": "youcode/jobeasy_mvc",
     "autoload": {
         "psr-4": {
-            "Http\\": "Http/",
-            "Core\\" : "Core/",
-            "Models\\" : "Models/"
+            "App\\": "app/"
         }
     },
     "authors": [
         {
-            "name": "HMZElidrissi",
-            "email": "hamza.ezzharelidrissi1@gmail.com"
+            "name": "Amine Formateur",
+            "email": "amine.devinfo@gmail.com"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "symfony/var-dumper": "^6.4"
+    }
 }
