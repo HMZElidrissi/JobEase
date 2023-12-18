@@ -14,7 +14,10 @@ if (isset($_POST['logout'])) {
     $userController->logout();
 }
 $applicationController = new \Http\Controllers\ApplicationController();
-$applicationController->apply();
+if (isset($_POST['apply'])) {
+    $applicationController->apply();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -10,9 +10,9 @@ use Http\Controllers\ApplicationController;
 /*error_reporting(E_ALL);
 ini_set('display_errors', 1);*/
 
+$userController = new \Http\Controllers\UserController();
 $controller = new ApplicationController();
 if (isset($_POST['logout'])) {
-    $userController = new \Http\Controllers\UserController();
     $userController->logout();
 }
 $jobController = new \Http\Controllers\JobController();
