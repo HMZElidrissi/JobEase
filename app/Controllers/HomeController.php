@@ -1,35 +1,20 @@
 <?php
 namespace App\Controllers;
-use App\Models\UserModel;
 
 class HomeController
 {
-    public function index()
+    public function home()
     {
-        $userModel = new UserModel();
-    
-        // Fetch data from the "users" table
+        $jobController = new JobController();
+        $jobs = $jobController->showActive();
 
-        $users = $userModel->getAllUsers();
-        // Your controller logic goes here
-        $data = 'Hello, this is the home page!';
-        $collections = ['users' => $users , "data" => $data] ;
-        require(__DIR__ .'../../../view/home.php');
-      
+        $applicationController = new ApplicationController();
 
+        require(__DIR__ .'../../../Views/home.php');
     }
-    public function fetchMoreUsers()
+    public function login()
     {
-       
-        $moreUsers = [
-            ['username' => 'test user A', 'email' => 'user1@example.com'],
-            ['username' => 'test user B', 'email' => 'user2@example.com'],
-        ];
-
-        // Return the data as JSON
-        header('Content-Type: application/json');
-        echo json_encode(['users' => $moreUsers]);
-        exit;
+        require(__DIR__ .'../../../Views/login.php');
     }
 }
-?>
+

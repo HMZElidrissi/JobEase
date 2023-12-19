@@ -1,7 +1,6 @@
 <?php
-// config.php
 
-define('DB_HOST', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'jobeasy');
+const DB_HOST = 'localhost';
+const DB_USERNAME = 'root';
+const DB_PASSWORD = '';
+const DB_NAME = 'jobs';
