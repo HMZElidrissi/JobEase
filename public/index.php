@@ -5,6 +5,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\Controllers\HomeController;
 use App\Controllers\UserController;
 use App\Controllers\ApplicationController;
+use App\Controllers\JobController;
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -60,6 +61,18 @@ switch ($route) {
     case 'jobs':
         $controller = new JobController();
         $controller->show();
+        break;
+    case 'addJob':
+        $controller = new JobController();
+        $controller->add();
+        break;
+    case 'updateJob':
+        $controller = new JobController();
+        $controller->update();
+        break;
+    case 'deleteJob':
+        $controller = new JobController();
+        $controller->delete();
         break;
     default:
         // Handle 404 or redirect to the default route

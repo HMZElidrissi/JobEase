@@ -1,24 +1,3 @@
-<?php
-
-require '../../config.php';
-require __DIR__ . '/../../vendor/autoload.php';
-
-use Http\Controllers\JobController;
-session_start();
-
-/*error_reporting(E_ALL);
-ini_set('display_errors', 1);*/
-
-$controller = new JobController();
-if (isset($_POST['logout'])) {
-    $userController = new \Http\Controllers\UserController();
-    $userController->logout();
-}
-$jobs = $controller->show();
-$controller->delete();
-$controller->update();
-$controller->add();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,6 +32,8 @@ $controller->add();
                             <th></th>
                             <th>Title</th>
                             <th>Description</th>
+                            <th>Location</th>
+                            <th>Company</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -74,20 +55,28 @@ $controller->add();
                                 <p class="fw-normal mb-1 f_title"><?= $job->title ?></p>
                             </td>
                             <td>
-                                <span class="f_status"><?= $job->description ?></span>
+                                <p class="fw-normal mb-1 f_title"><?= $job->description ?></p>
                             </td>
-                            <td class="f_position"><?= $job->is_active ? 'Active' : 'Inactive' ?></td>
                             <td>
-                                <form method="post" action="">
+                                <p class="fw-normal mb-1 f_title"><?= $job->location ?></p>
+                            </td>
+                            <td>
+                                <p class="fw-normal mb-1 f_title"><?= $job->company ?></p>
+                            </td>
+                            <td class="f_position">
+                                <?= $job->is_active ? 'Active' : 'Inactive' ?>
+                            </td>
+                            <td>
+                                <form method="post" action="?route=deleteJob">
                                     <input type="hidden" name="jobId" value="<?= $job->id ?>">
                                     <button type="submit" name="delete">
-                                        <img src="../public/assets/dashboard/img/user-x.svg" alt="DELETE">
+                                        <img src="assets/dashboard/img/user-x.svg" alt="DELETE">
                                     </button>
                                 </form>
-                                <img class="ms-2 edit" src="../public/assets/dashboard/img/edit.svg" alt="EDIT" data-bs-toggle="modal" data-bs-target="#modal<?= $job->id ?>">
+                                <img class="ms-2 edit" src="assets/dashboard/img/edit.svg" alt="EDIT" data-bs-toggle="modal" data-bs-target="#modal<?= $job->id ?>">
                                 <div class="modal" id="modal<?= $job->id ?>">
                                     <div class="modal-content" >
-                                        <form id="editForm" method="POST" enctype="multipart/form-data">
+                                        <form id="editForm" method="POST" action="?route=updateJob" enctype="multipart/form-data">
                                             <input type="hidden" name="id" value="<?= $job->id ?>">
                                             <div class="mb-4">
                                                 <label class="form-label">Image</label>
@@ -113,6 +102,14 @@ $controller->add();
                                                 <textarea name="description" class="form-control position"  rows="3" ><?= $job->description ?></textarea>
                                             </div>
                                             <div class="mb-4">
+                                                <label class="form-label">Location</label>
+                                                <input name="location" type="text" class="form-control location" value="<?= $job->location ?>">
+                                            </div>
+                                            <div class="mb-4">
+                                                <label class="form-label">Company</label>
+                                                <input name="company" type="text" class="form-control company" value="<?= $job->company ?>">
+                                            </div>
+                                            <div class="mb-4">
                                                 <label class="form-label">Status</label>
                                                 <select name="is_active" class="form-select status" aria-label="Default select example">
                                                     <option value="1" <?= $job->is_active ? 'selected' : '' ?>>Active</option>
@@ -124,14 +121,14 @@ $controller->add();
                                             <div class="d-flex w-100 justify-content-center">
                                                 <p class="error text-danger"></p>
                                                 <button name="update" type="submit" class="btn btn-success btn-block mb-4 me-4 save">Save Edit</button>
-                                                <button class="btn btn-danger btn-block mb-4 annuler">Annuler</button>
+                                                <a href="?route=jobs" class="btn btn-danger btn-block mb-4 annuler">Annuler</a>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="modal" id="addModal">
                                     <div class="modal-content" >
-                                        <form id="addForm" method="POST" enctype="multipart/form-data">
+                                        <form id="addForm" method="POST" enctype="multipart/form-data" action="?route=addJob">
                                             <div class="mb-4">
                                                 <label class="form-label">Image</label>
                                                 <input name="image" type="file" class="form-control image">
@@ -147,6 +144,14 @@ $controller->add();
                                                 <textarea name="description" class="form-control position"  rows="3" ></textarea>
                                             </div>
                                             <div class="mb-4">
+                                                <label class="form-label">Location</label>
+                                                <input name="location" type="text" class="form-control location"">
+                                            </div>
+                                            <div class="mb-4">
+                                                <label class="form-label">Company</label>
+                                                <input name="company" type="text" class="form-control company"">
+                                            </div>
+                                            <div class="mb-4">
                                                 <label class="form-label">Status</label>
                                                 <select name="is_active" class="form-select status" aria-label="Default select example">
                                                     <option value="1">Active</option>
@@ -158,7 +163,7 @@ $controller->add();
                                             <div class="d-flex w-100 justify-content-center">
                                                 <p class="error text-danger"></p>
                                                 <button name="add" type="submit" class="btn btn-success btn-block mb-4 me-4 save">Save</button>
-                                                <button class="btn btn-danger btn-block mb-4 annuler">Annuler</button>
+                                                <a href="?route=jobs" class="btn btn-danger btn-block mb-4 annuler">Annuler</a>
                                             </div>
                                         </form>
                                     </div>

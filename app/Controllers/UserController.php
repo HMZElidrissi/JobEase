@@ -64,7 +64,7 @@ class UserController
             session_start();
             session_unset();
             session_destroy();
-            header('Refresh: 0');
+            header("Location: ?route=home");
         }
     }
 }

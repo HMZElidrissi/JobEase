@@ -15,7 +15,8 @@ class JobController
 
     public function show()
     {
-        return $this->jobModel->getAllJobs();
+        $jobs = $this->jobModel->getAllJobs();
+        require(__DIR__ .'../../../Views/jobs.php');
     }
 
     public function showActive()
@@ -34,6 +35,8 @@ class JobController
             $data = [
                 'title' => $_POST['title'],
                 'description' => $_POST['description'],
+                'location' => $_POST['location'],
+                'company' => $_POST['company'],
                 'is_active' => $_POST['is_active']
             ];
 
@@ -45,7 +48,7 @@ class JobController
 
             $this->jobModel->addJob($data, $imageContent);
 
-            header("Refresh: 0");
+            header("Location: ?route=jobs");
         }
     }
 
@@ -56,6 +59,8 @@ class JobController
             $data = [
                 'title' => $_POST['title'],
                 'description' => $_POST['description'],
+                'location' => $_POST['location'],
+                'company' => $_POST['company'],
                 'is_active' => $_POST['is_active']
             ];
 
@@ -67,7 +72,7 @@ class JobController
 
             $this->jobModel->updateJob($id, $data, $imageContent);
 
-            header("Refresh: 0");
+            header("Location: ?route=jobs");
         }
     }
 
@@ -76,7 +81,7 @@ class JobController
         if ($_SERVER['REQUEST_METHOD'] == 'POST'&& isset($_POST['delete'])) {
             $jobId = $_POST['jobId'];
             $this->jobModel->deleteJob($jobId);
-            header("Refresh: 0");
+            header("Location: ?route=jobs");
         }
     }
 
