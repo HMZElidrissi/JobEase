@@ -61,7 +61,7 @@
                                 <button name="logout" type="submit" class="btn btn-primary">Logout</button>
                             </form>
                         <?php else : ?>
-                            <a class="nav-link" href="Views/login.php">Login</a>
+                            <a class="nav-link" href="?route=login">Login</a>
                         <?php endif; ?>
                     </li>
                 </ul>

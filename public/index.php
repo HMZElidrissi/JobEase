@@ -3,9 +3,11 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\Controllers\HomeController;
+use App\Controllers\UserController;
+use App\Controllers\ApplicationController;
 
-/*error_reporting(E_ALL);
-ini_set('display_errors', 1);*/
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 
 /*
@@ -23,9 +25,41 @@ switch ($route) {
         $controller = new HomeController();
         $controller->home();
         break;
+    case 'dashboard':
+        $controller = new HomeController();
+        $controller->dashboard();
+        break;
     case 'login':
-        $logincontroller = new LoginController();
-        $logincontroller->login();
+        $controller = new UserController();
+        $controller->login();
+        break;
+    case 'register':
+        $controller = new UserController();
+        $controller->register();
+        break;
+    case 'logout':
+        $controller = new UserController();
+        $controller->logout();
+        break;
+    case 'applications':
+        $controller = new ApplicationController();
+        $controller->show();
+        break;
+    case 'apply':
+        $controller = new ApplicationController();
+        $controller->apply();
+        break;
+    case 'approve':
+        $controller = new ApplicationController();
+        $controller->approve();
+        break;
+    case 'reject':
+        $controller = new ApplicationController();
+        $controller->reject();
+        break;
+    case 'jobs':
+        $controller = new JobController();
+        $controller->show();
         break;
     default:
         // Handle 404 or redirect to the default route

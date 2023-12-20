@@ -12,9 +12,14 @@ class HomeController
 
         require(__DIR__ .'../../../Views/home.php');
     }
-    public function login()
+
+    public function dashboard()
     {
-        require(__DIR__ .'../../../Views/login.php');
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ?route=login');
+        }
+        require(__DIR__ .'../../../Views/dashboard.php');
     }
 }
 

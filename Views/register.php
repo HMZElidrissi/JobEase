@@ -1,20 +1,3 @@
-<?php
-
-require '../../config.php';
-require __DIR__ . '/../../vendor/autoload.php';
-
-use Http\Controllers\UserController;
-
-/*For debugging purposes*/
-/*var_dump(class_exists('Http\Controllers\UserController'));*/
-
-/*error_reporting(E_ALL);
-ini_set('display_errors', 1);*/
-
-$controller = new UserController();
-$controller->register();
-
-?>
 <!DOCTYPE html>
 <!-- Coding By CodingNepal - codingnepalweb.com -->
 <html lang="en" dir="ltr">
@@ -23,7 +6,7 @@ $controller->register();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Registration or Sign Up form in HTML CSS | CodingLab </title>
-  <link rel="stylesheet" href="../assets/styles/registerstyle.css">
+  <link rel="stylesheet" href="assets/styles/registerstyle.css">
 </head>
 
 <body>
@@ -50,7 +33,7 @@ $controller->register();
         <input type="Submit" value="Register Now">
       </div>
       <div class="text">
-        <h3>Already have an account? <a href="login.php">Login now</a></h3>
+        <h3>Already have an account? <a href="?route=login">Login now</a></h3>
       </div>
     </form>
   </div>

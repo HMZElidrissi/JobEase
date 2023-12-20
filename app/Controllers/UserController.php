@@ -18,6 +18,7 @@ class UserController
     }
 
     public function register() {
+        require(__DIR__ .'../../../Views/register.php');
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
                 'username' => trim($_POST['username']),
@@ -35,6 +36,7 @@ class UserController
     }
 
     public function login() {
+        require(__DIR__ .'../../../Views/login.php');
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email = trim($_POST['email']);
             $password = trim($_POST['password']);
@@ -46,10 +48,10 @@ class UserController
                 $_SESSION['username'] = $user->username;
                 if ($user->role_id == 1) {
                     $_SESSION['role'] = 'admin';
-                    header('Location: dashboard.php');
+                    header('Location: ?route=dashboard');
                 } else {
                     $_SESSION['role'] = 'Candidate';
-                    header('Location: ../index.php');
+                    header('Location: ?route=dashboard');
                 }
             } else {
                 die('Login failed');

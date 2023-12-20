@@ -43,9 +43,9 @@
                 <div class="dropdown-menu dropdown-menu-end position-absolute">
                     <a class="dropdown-item" href="#">Profile</a>
                     <a class="dropdown-item" href="#">Account Setting</a>
-                    <form action="" method="post">
+                    <form action="?route=logout" method="post">
                         <input type="hidden" name="logout">
-                        <button name="logout" type="submit" class="dropdown-item">Logout</button>
+                        <button name="logout" type="submit" class="btn btn-primary">Logout</button>
                     </form>
                 </div>
             </li>

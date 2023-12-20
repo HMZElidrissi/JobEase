@@ -1,25 +1,3 @@
-<?php
-
-require '../../config.php';
-require __DIR__ . '/../../vendor/autoload.php';
-
-session_start();
-
-use Http\Controllers\ApplicationController;
-
-/*error_reporting(E_ALL);
-ini_set('display_errors', 1);*/
-
-$userController = new \Http\Controllers\UserController();
-$controller = new ApplicationController();
-if (isset($_POST['logout'])) {
-    $userController->logout();
-}
-$jobController = new \Http\Controllers\JobController();
-$applications = $controller->show();
-$controller->approve();
-$controller->reject();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,7 +48,7 @@ $controller->reject();
                             <?= $application->status ?>
                         </td>
                         <td>
-                            <form method="post" action="">
+                            <form method="post" action="?route=approve">
                                 <input type="hidden" name="jobId" value="<?= $application->id ?>">
                                 <button type="submit" name="approve">
                                     Approve
@@ -78,7 +56,7 @@ $controller->reject();
                             </form>
                         </td>
                         <td>
-                            <form method="post" action="">
+                            <form method="post" action="?route=reject">
                                 <input type="hidden" name="jobId" value="<?= $application->id ?>">
                                 <button type="submit" name="reject">
                                     Reject

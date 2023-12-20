@@ -1,14 +1,3 @@
-<?php
-
-require '../../config.php';
-require __DIR__ . '/../../vendor/autoload.php';
-
-use Http\Controllers\UserController;
-
-$controller = new UserController();
-$controller->login();
-
-?>
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
@@ -40,7 +29,7 @@ $controller->login();
           <input type="submit" value="Login">
         </div>
         <span style="color:red;"></span>
-        <div class="signup-link">Not a member? <a href="register.php">Signup now</a></div>
+        <div class="signup-link">Not a member? <a href="?route=register">Signup now</a></div>
       </form>
     </div>
   </div>

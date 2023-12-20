@@ -15,7 +15,10 @@ class ApplicationController
 
     public function show()
     {
-        return $this->applicationModel->getAllApplications();
+        $applications = $this->applicationModel->getAllApplications();
+        $jobController = new JobController();
+        $userController = new UserController();
+        require(__DIR__ .'../../../Views/applications.php');
     }
 
     public function apply()
@@ -42,7 +45,7 @@ class ApplicationController
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['approve'])) {
             $id = $_POST['jobId'];
             $this->applicationModel->approveApplication($id);
-            header("Refresh: 0");
+            header("Location: ?route=applications");
         }
     }
 
@@ -51,7 +54,7 @@ class ApplicationController
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['reject'])) {
             $id = $_POST['jobId'];
             $this->applicationModel->rejectApplication($id);
-            header("Refresh: 0");
+            header("Location: ?route=applications");
         }
     }
 
