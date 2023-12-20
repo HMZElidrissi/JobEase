@@ -111,7 +111,7 @@
                     <div class="postcard__preview-txt">
                         <?= $job->description ?>
                         <br>
-                        <form action="" method="post">
+                        <form action="?route=apply" method="post">
                             <input type="hidden" name="job_id" value="<?= $job->id ?>">
                             <button type="submit" name="apply" class="btn btn-primary">APPLY NOW</button>
                         </form>

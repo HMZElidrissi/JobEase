@@ -15,6 +15,10 @@ class JobController
 
     public function show()
     {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ?route=login');
+        }
         $jobs = $this->jobModel->getAllJobs();
         require(__DIR__ .'../../../Views/jobs.php');
     }

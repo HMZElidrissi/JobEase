@@ -15,6 +15,10 @@ class ApplicationController
 
     public function show()
     {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ?route=login');
+        }
         $applications = $this->applicationModel->getAllApplications();
         $jobController = new JobController();
         $userController = new UserController();
@@ -32,10 +36,10 @@ class ApplicationController
 
                 $this->applicationModel->addApplication($data);
 
-                header("Refresh: 0");
+                header("Location: ?route=home");
             }
         } else {
-            header("Location: Views/login.php");
+            header("Location: ?route=login");
         }
 
     }

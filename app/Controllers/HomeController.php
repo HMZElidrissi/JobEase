@@ -5,6 +5,7 @@ class HomeController
 {
     public function home()
     {
+        session_start();
         $jobController = new JobController();
         $jobs = $jobController->showActive();
 
