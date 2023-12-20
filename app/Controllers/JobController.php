@@ -91,6 +91,44 @@ class JobController
 
     public function search($params)
     {
-        return $this->jobModel->searchJobs($params);
+        $jobs = $this->jobModel->searchJobs($params);
+        foreach ($jobs as $job) {
+            echo '<article class="postcard light green">';
+            echo '<a class="postcard__img_link" href="#">';
+
+            if ($job->image) {
+                $imageSrc = 'data:image/jpeg;base64,' . base64_encode($job->image);
+            } else {
+                $imageSrc = 'https://picsum.photos/300/300';
+            }
+
+            echo '<img class="postcard__img" src="' . $imageSrc . '" alt="Image Title" />';
+            echo '</a>';
+            echo '<div class="postcard__text t-dark">';
+            echo '<h3 class="postcard__title green"><a href="#">' . $job->title . '</a></h3>';
+            echo '<div class="postcard__subtitle">';
+            echo '<ul class="postcard__tagbox" style="list-style: none;">';
+            echo '<li class="tag__item play">';
+            echo '<a href="#">' . $job->created_at . '</a>';
+            echo '</li>';
+            echo '<li class="tag__item play">';
+            echo '<a href="#">' . $job->company . '</a>';
+            echo '</li>';
+            echo '<li class="tag__item play">';
+            echo '<a href="#">' . $job->location . '</a>';
+            echo '</li>';
+            echo '</ul>';
+            echo '</div>';
+            echo '<div class="postcard__preview-txt">';
+            echo $job->description;
+            echo '<form action="?route=apply" method="post">';
+            echo '<input type="hidden" name="job_id" value="' . $job->id . '">';
+            echo '<button type="submit" class="btn btn-primary">Apply</button>';
+            echo '</form>';
+            echo '</div>';
+            echo '</div>';
+            echo '</article>';
+        }
+
     }
 }

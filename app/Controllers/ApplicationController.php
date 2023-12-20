@@ -27,6 +27,7 @@ class ApplicationController
 
     public function apply()
     {
+        session_start();
         if ($_SESSION['user_id']){
             if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['apply'])) {
                 $data = [
@@ -60,6 +61,11 @@ class ApplicationController
             $this->applicationModel->rejectApplication($id);
             header("Location: ?route=applications");
         }
+    }
+
+    public function isApplied($jobId)
+    {
+        return $this->applicationModel->isApplied($jobId);
     }
 
     public function getApplicationById($id)

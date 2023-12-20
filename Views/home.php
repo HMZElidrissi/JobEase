@@ -71,7 +71,7 @@
 </header>
 <section class="search" >
     <h2>Find Your Dream Job</h2>
-    <form  action="#" method="get" class="form-inline">
+    <form  action="?route=search" method="get" class="form-inline">
         <div class="form-group mb-2">
             <input type="text" id="keywords" placeholder="Keywords">
         </div>
@@ -104,16 +104,25 @@
                 <div class="postcard__text t-dark">
                     <h3 class="postcard__title green"><a href="#"><?= $job->title ?></a></h3>
                     <div class="postcard__subtitle">
-                        <p>
-                            <?= $job->created_at ?>
-                        </p>
+                        <ul class="postcard__tagbox" style="list-style: none;">
+                            <li class="tag__item play">
+                                <a href="#"><?= $job->created_at ?></a>
+                            </li>
+                            <li class="tag__item play">
+                                <a href="#"><?= $job->company ?></a>
+                            </li>
+                            <li class="tag__item play">
+                                <a href="#"><?= $job->location ?></a>
+                            </li>
+                        </ul>
                     </div>
                     <div class="postcard__preview-txt">
                         <?= $job->description ?>
-                        <br>
                         <form action="?route=apply" method="post">
                             <input type="hidden" name="job_id" value="<?= $job->id ?>">
-                            <button type="submit" name="apply" class="btn btn-primary">APPLY NOW</button>
+                            <button type="submit" name="apply" class="btn btn-primary mt-2">
+                                <?php echo ($applicationController->isApplied($job->id)) ? "APPLIED" : "APPLY NOW"; ?>
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -125,31 +134,10 @@
 <footer>
     <p>© 2023 JobEase </p>
 </footer>
+<script src="assets/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#searchBtn').click(function () {
-            var keywords = $('#keywords').val();
-            var location = $('#location').val();
-            var company = $('#company').val();
-
-            $.ajax({
-                type: 'GET',
-                url: 'ajax_search.php',
-                data: {
-                    keywords: keywords,
-                    location: location,
-                    company: company
-                },
-                success: function (data) {
-                    $('#results').html(data);
-                }
-            });
-        });
-    });
-</script>
 </body>
 
 

@@ -46,4 +46,12 @@ class Application
         $this->db->bind(':id', $id);
         return $this->db->execute();
     }
+
+    public function isApplied($jobId)
+    {
+        $this->db->query("SELECT * FROM applications WHERE job_id = :job_id AND user_id = :user_id");
+        $this->db->bind(':job_id', $jobId);
+        $this->db->bind(':user_id', $_SESSION['user_id']);
+        return $this->db->fetchSingleRecord();
+    }
 }

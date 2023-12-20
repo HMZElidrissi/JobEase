@@ -7,9 +7,8 @@ use App\Controllers\UserController;
 use App\Controllers\ApplicationController;
 use App\Controllers\JobController;
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
+/*error_reporting(E_ALL);
+ini_set('display_errors', 1);*/
 
 /*
  * This uses the ternary operator (?:):
@@ -74,12 +73,13 @@ switch ($route) {
         $controller = new JobController();
         $controller->delete();
         break;
+    case 'search':
+        $controller = new JobController();
+        $controller->search($_GET);
+        break;
     default:
         // Handle 404 or redirect to the default route
         header('HTTP/1.0 404 Not Found');
         exit('Page not found');
 }
-
-// Execute the controller action
-
 
