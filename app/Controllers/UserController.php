@@ -28,7 +28,7 @@ class UserController
             ];
 
             if ($this->userModel->register($data)) {
-                header('Location: login.php');
+                header('Location: /login');
             } else {
                 die('Something went wrong');
             }
@@ -48,10 +48,10 @@ class UserController
                 $_SESSION['username'] = $user->username;
                 if ($user->role_id == 1) {
                     $_SESSION['role'] = 'admin';
-                    header('Location: ?route=dashboard');
+                    header('Location: /dashboard');
                 } else {
                     $_SESSION['role'] = 'Candidate';
-                    header('Location: ?route=dashboard');
+                    header('Location: /');
                 }
             } else {
                 die('Login failed');
@@ -64,7 +64,7 @@ class UserController
             session_start();
             session_unset();
             session_destroy();
-            header("Location: ?route=home");
+            header("Location: /");
         }
     }
 }

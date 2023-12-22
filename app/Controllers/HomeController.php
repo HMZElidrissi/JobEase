@@ -17,8 +17,8 @@ class HomeController
     public function dashboard()
     {
         session_start();
-        if (!isset($_SESSION['user_id'])) {
-            header('Location: ?route=login');
+        if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+            header('Location: /login');
         }
         require(__DIR__ .'../../../Views/dashboard.php');
     }

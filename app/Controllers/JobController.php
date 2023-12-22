@@ -17,7 +17,7 @@ class JobController
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
-            header('Location: ?route=login');
+            header('Location: /login');
         }
         $jobs = $this->jobModel->getAllJobs();
         require(__DIR__ .'../../../Views/jobs.php');
@@ -36,23 +36,24 @@ class JobController
     public function add()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add'])) {
+            $imageContent = null;
+
+            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK){
+                $imageContent = file_get_contents($_FILES['image']['tmp_name']);
+            }
+
             $data = [
                 'title' => $_POST['title'],
                 'description' => $_POST['description'],
                 'location' => $_POST['location'],
                 'company' => $_POST['company'],
-                'is_active' => $_POST['is_active']
+                'is_active' => $_POST['is_active'],
+                'image' => $imageContent
             ];
 
-            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK){
-                $imageContent = file_get_contents($_FILES['image']['tmp_name']);
-            } else {
-                $imageContent = null;
-            }
+            $this->jobModel->addJob($data);
 
-            $this->jobModel->addJob($data, $imageContent);
-
-            header("Location: ?route=jobs");
+            header("Location: /jobs");
         }
     }
 
@@ -76,7 +77,7 @@ class JobController
 
             $this->jobModel->updateJob($id, $data, $imageContent);
 
-            header("Location: ?route=jobs");
+            header("Location: /jobs");
         }
     }
 
@@ -85,13 +86,13 @@ class JobController
         if ($_SERVER['REQUEST_METHOD'] == 'POST'&& isset($_POST['delete'])) {
             $jobId = $_POST['jobId'];
             $this->jobModel->deleteJob($jobId);
-            header("Location: ?route=jobs");
+            header("Location: /jobs");
         }
     }
 
-    public function search($params)
+    public function search()
     {
-        $jobs = $this->jobModel->searchJobs($params);
+        $jobs = $this->jobModel->searchJobs($_GET['keywords'], $_GET['location'], $_GET['company']);
         foreach ($jobs as $job) {
             echo '<article class="postcard light green">';
             echo '<a class="postcard__img_link" href="#">';
@@ -121,7 +122,7 @@ class JobController
             echo '</div>';
             echo '<div class="postcard__preview-txt">';
             echo $job->description;
-            echo '<form action="?route=apply" method="post">';
+            echo '<form action="/applications/apply" method="post">';
             echo '<input type="hidden" name="job_id" value="' . $job->id . '">';
             echo '<button type="submit" class="btn btn-primary">Apply</button>';
             echo '</form>';

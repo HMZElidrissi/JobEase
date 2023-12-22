@@ -25,32 +25,29 @@ class Job
         return $this->db->fetchAllRecords();
     }
 
-    public function addJob($data, $imageContent)
+    public function addJob($data)
     {
-        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            $this->db->query("INSERT INTO jobs (title, description, image, is_active) VALUES (:title, :description, :location, :company, :is_active)");
-            $this->db->bind(':title', $data['title']);
-            $this->db->bind(':description', $data['description']);
-            $this->db->bind(':location', $data['location']);
-            $this->db->bind(':company', $data['company']);
-            $this->db->bind(':image', $imageContent, PDO::PARAM_LOB);
-            $this->db->bind(':is_active', $data['is_active']);
-            return $this->db->execute();
+        if ($data['image']) {
+            $this->db->query("INSERT INTO jobs (title, description, location, company, image, is_active) VALUES (:title, :description, :location, :company, :image, :is_active)");
+            $this->db->bind(':image', $data['image'], PDO::PARAM_LOB);
         } else {
-            $this->db->query("INSERT INTO jobs (title, description, is_active) VALUES (:title, :description, :location, :company, :is_active)");
-            $this->db->bind(':title', $data['title']);
-            $this->db->bind(':description', $data['description']);
-            $this->db->bind(':location', $data['location']);
-            $this->db->bind(':company', $data['company']);
-            $this->db->bind(':is_active', $data['is_active']);
-            return $this->db->execute();
+            $this->db->query("INSERT INTO jobs (title, description, location, company, is_active) VALUES (:title, :description, :location, :company, :is_active)");
         }
+
+        $this->db->bind(':title', $data['title']);
+        $this->db->bind(':description', $data['description']);
+        $this->db->bind(':location', $data['location']);
+        $this->db->bind(':company', $data['company']);
+        $this->db->bind(':is_active', $data['is_active']);
+
+        return $this->db->execute();
     }
+
 
     public function updateJob($id, $data, $imageContent)
     {
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-            $this->db->query("UPDATE jobs SET title = :title, description = :description, :location = :location, :company = :company, image = :image, is_active = :is_active WHERE id = :id");
+            $this->db->query("UPDATE jobs SET title = :title, description = :description, location = :location, company = :company, image = :image, is_active = :is_active WHERE id = :id");
             $this->db->bind(':id', $id);
             $this->db->bind(':title', $data['title']);
             $this->db->bind(':description', $data['description']);
@@ -85,12 +82,12 @@ class Job
         return $this->db->execute();
     }
 
-    public function searchJobs($params)
+    public function searchJobs($keywords, $location, $company)
     {
         $this->db->query("SELECT * FROM jobs WHERE title LIKE :keywords AND location LIKE :location AND company LIKE :company");
-        $this->db->bind(':keywords', '%' . $params['keywords'] . '%');
-        $this->db->bind(':location', '%' . $params['location'] . '%');
-        $this->db->bind(':company', '%' . $params['company'] . '%');
+        $this->db->bind(':keywords', '%' . $keywords . '%');
+        $this->db->bind(':location', '%' . $location . '%');
+        $this->db->bind(':company', '%' . $company . '%');
 
         return $this->db->fetchAllRecords();
     }

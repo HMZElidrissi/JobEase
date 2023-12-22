@@ -67,7 +67,7 @@
                                 <?= $job->is_active ? 'Active' : 'Inactive' ?>
                             </td>
                             <td>
-                                <form method="post" action="?route=deleteJob">
+                                <form method="post" action="/jobs/delete">
                                     <input type="hidden" name="jobId" value="<?= $job->id ?>">
                                     <button type="submit" name="delete">
                                         <img src="assets/dashboard/img/user-x.svg" alt="DELETE">
@@ -76,7 +76,7 @@
                                 <img class="ms-2 edit" src="assets/dashboard/img/edit.svg" alt="EDIT" data-bs-toggle="modal" data-bs-target="#modal<?= $job->id ?>">
                                 <div class="modal" id="modal<?= $job->id ?>">
                                     <div class="modal-content" >
-                                        <form id="editForm" method="POST" action="?route=updateJob" enctype="multipart/form-data">
+                                        <form id="editForm" method="POST" action="/jobs/update" enctype="multipart/form-data">
                                             <input type="hidden" name="id" value="<?= $job->id ?>">
                                             <div class="mb-4">
                                                 <label class="form-label">Image</label>
@@ -121,14 +121,14 @@
                                             <div class="d-flex w-100 justify-content-center">
                                                 <p class="error text-danger"></p>
                                                 <button name="update" type="submit" class="btn btn-success btn-block mb-4 me-4 save">Save Edit</button>
-                                                <a href="?route=jobs" class="btn btn-danger btn-block mb-4 annuler">Annuler</a>
+                                                <a href="/jobs" class="btn btn-danger btn-block mb-4 annuler">Annuler</a>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="modal" id="addModal">
                                     <div class="modal-content" >
-                                        <form id="addForm" method="POST" enctype="multipart/form-data" action="?route=addJob">
+                                        <form id="addForm" method="POST" enctype="multipart/form-data" action="/jobs/add">
                                             <div class="mb-4">
                                                 <label class="form-label">Image</label>
                                                 <input name="image" type="file" class="form-control image">
@@ -163,7 +163,7 @@
                                             <div class="d-flex w-100 justify-content-center">
                                                 <p class="error text-danger"></p>
                                                 <button name="add" type="submit" class="btn btn-success btn-block mb-4 me-4 save">Save</button>
-                                                <a href="?route=jobs" class="btn btn-danger btn-block mb-4 annuler">Annuler</a>
+                                                <a href="/jobs" class="btn btn-danger btn-block mb-4 annuler">Annuler</a>
                                             </div>
                                         </form>
                                     </div>

@@ -6,7 +6,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'GET',
-            url: '?route=search',
+            url: '/jobs/search',
             data: {
                 keywords: keywords,
                 location: location,

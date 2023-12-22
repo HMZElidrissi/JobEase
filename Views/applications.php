@@ -48,7 +48,7 @@
                             <?= $application->status ?>
                         </td>
                         <td>
-                            <form method="post" action="?route=approve">
+                            <form method="post" action="/applications/approve">
                                 <input type="hidden" name="jobId" value="<?= $application->id ?>">
                                 <button type="submit" name="approve">
                                     Approve
@@ -56,7 +56,7 @@
                             </form>
                         </td>
                         <td>
-                            <form method="post" action="?route=reject">
+                            <form method="post" action="/applications/reject">
                                 <input type="hidden" name="jobId" value="<?= $application->id ?>">
                                 <button type="submit" name="reject">
                                     Reject

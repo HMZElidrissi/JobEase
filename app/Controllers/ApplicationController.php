@@ -17,7 +17,7 @@ class ApplicationController
     {
         session_start();
         if (!isset($_SESSION['user_id'])) {
-            header('Location: ?route=login');
+            header('Location: /login');
         }
         $applications = $this->applicationModel->getAllApplications();
         $jobController = new JobController();
@@ -37,10 +37,10 @@ class ApplicationController
 
                 $this->applicationModel->addApplication($data);
 
-                header("Location: ?route=home");
+                header("Location: /");
             }
         } else {
-            header("Location: ?route=login");
+            header("Location: /login");
         }
 
     }
@@ -50,7 +50,7 @@ class ApplicationController
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['approve'])) {
             $id = $_POST['jobId'];
             $this->applicationModel->approveApplication($id);
-            header("Location: ?route=applications");
+            header("Location: /applications");
         }
     }
 
@@ -59,7 +59,7 @@ class ApplicationController
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['reject'])) {
             $id = $_POST['jobId'];
             $this->applicationModel->rejectApplication($id);
-            header("Location: ?route=applications");
+            header("Location: /applications");
         }
     }
 

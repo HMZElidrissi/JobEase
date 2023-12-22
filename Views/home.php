@@ -56,12 +56,12 @@
 						</span>
                     <li class="nav-item">
                         <?php if (isset($_SESSION['user_id'])) : ?>
-                            <form action="" method="post">
+                            <form action="/logout" method="post">
                                 <input type="hidden" name="logout">
                                 <button name="logout" type="submit" class="btn btn-primary">Logout</button>
                             </form>
                         <?php else : ?>
-                            <a class="nav-link" href="?route=login">Login</a>
+                            <a class="nav-link" href="/login">Login</a>
                         <?php endif; ?>
                     </li>
                 </ul>
@@ -71,7 +71,7 @@
 </header>
 <section class="search" >
     <h2>Find Your Dream Job</h2>
-    <form  action="?route=search" method="get" class="form-inline">
+    <form  action="/jobs/search" method="get" class="form-inline">
         <div class="form-group mb-2">
             <input type="text" id="keywords" placeholder="Keywords">
         </div>
@@ -118,7 +118,7 @@
                     </div>
                     <div class="postcard__preview-txt">
                         <?= $job->description ?>
-                        <form action="?route=apply" method="post">
+                        <form action="/applications/apply" method="post">
                             <input type="hidden" name="job_id" value="<?= $job->id ?>">
                             <button type="submit" name="apply" class="btn btn-primary mt-2">
                                 <?php echo ($applicationController->isApplied($job->id)) ? "APPLIED" : "APPLY NOW"; ?>

@@ -33,7 +33,7 @@
         <input type="Submit" value="Register Now">
       </div>
       <div class="text">
-        <h3>Already have an account? <a href="?route=login">Login now</a></h3>
+        <h3>Already have an account? <a href="/login">Login now</a></h3>
       </div>
     </form>
   </div>
