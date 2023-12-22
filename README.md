@@ -1,41 +1,67 @@
-# jobease_php_mvc
+# JobEase
 
+## Fonctionnalités Backend
 
-This is a simple PHP project using the MVC architecture.
+### Système d'Authentification Sécurisé :
+- Implémentation d'un système de connexion et d'inscription sécurisé.
+- Confidentialité des données des utilisateurs garantie.
+- Contrôle d'accès basé sur les rôles des utilisateurs.
 
-## Getting Started
+### Gestion des Rôles :
+- Gestion des rôles pour attribuer les privilèges des utilisateurs.
+- Rôles d'administrateur et de candidat, avec permissions spécifiques.
 
-Follow these steps to set up and run the project on your local machine.
+### Interface Administrateur :
+- Interface de connexion sécurisée pour les recruteurs.
+- Gestion des offres d'emploi : création, modification, suppression.
+- Sécurisation des informations sensibles des recruteurs.
 
-### Prerequisites
+### Interface Candidat :
+- Plateforme conviviale pour la consultation des offres d'emploi.
+- Formulaire d'inscription sécurisé pour les nouveaux candidats.
+- Soumission de candidatures en ligne avec suivi en temps réel.
 
-- PHP installed on your machine
-- Composer installed on your machine
+### Fonctionnalités de Recherche Avancée :
+- Moteur de recherche avancé avec filtres.
+- Utilisation d'AJAX pour des résultats instantanés.
 
-### Installation
+### Intégration avec un Modèle de Template Existant :
+- Adhésion à la structure de template pour une intégration harmonieuse.
+- Expérience utilisateur cohérente sur l'ensemble du système.
 
-1. Clone the repository:
+### Fonctionnalités Backend Admin :
+- Gestion des offres d'emploi (CRUD + téléchargement d'image).
+- Création de descriptions professionnelles.
+- Gestion de la visibilité des offres et approbation des demandes d'emploi.
 
-   ```bash
-   git clone https://github.com/AmineDevF/jobease_php_mvc.git
-## Navigate to the project directory:
+### Statistiques pour l'Admin :
+- Visualisation des statistiques des offres d'emploi.
 
-cd your-repo
+### Partie Front Office :
+- Recherche d'emplois accessible sans authentification.
+- Authentification requise lors de la candidature.
 
-## Install Composer dependencies:
+### Internationalisation :
+- Système d'internationalisation pour support multilingue.
 
-composer install
+## Prérequis
+- PHP installé sur votre machine.
+- Composer installé sur votre machine.
 
-## Install Symfony VarDumper (used for debugging) as a development dependency
-
-composer require symfony/var-dumper --dev
-
-## Start the built-in PHP web server :
-
-php -S localhost:8000 -t public
-
-## Important Notes 
-
-Make sure to configure your database details in config.php or .env.
-Ensure that your web server can serve static files from the public directory
-
+## Installation
+1. Cloner le dépôt :
+   ```
+   git clone https://github.com/HMZElidrissi/JobEase.git
+   ```
+2. Naviguer vers le répertoire du projet :
+   ```
+   cd your-repo
+   ```
+3. Installer les dépendances Composer :
+   ```
+   composer install
+   ```
+4. Démarrer le serveur web PHP intégré :
+   ```
+   php -S localhost:8000 -t public
+   ```
