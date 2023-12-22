@@ -1,47 +1,67 @@
-# JobEase - Aperçu des Fonctionnalités Backend
+# JobEase
 
-## Système d'Authentification Sécurisé :
-- Implémenter un système de connexion et d'inscription sécurisé.
-- Assurer la confidentialité des données des utilisateurs.
-- Contrôler l'accès en fonction des rôles des utilisateurs.
+## Fonctionnalités Backend
 
-## Gestion des Rôles :
-- Intégrer une gestion des rôles pour attribuer les privilèges des utilisateurs.
-- Les rôles comprennent l'administrateur et le candidat, chacun avec des permissions spécifiques.
+### Système d'Authentification Sécurisé :
+- Implémentation d'un système de connexion et d'inscription sécurisé.
+- Confidentialité des données des utilisateurs garantie.
+- Contrôle d'accès basé sur les rôles des utilisateurs.
 
-## Interface Administrateur :
-- Fournir une interface de connexion sécurisée pour les recruteurs.
-- Faciliter la gestion des offres d'emploi : création, modification, suppression.
-- Protéger les informations sensibles des recruteurs.
+### Gestion des Rôles :
+- Gestion des rôles pour attribuer les privilèges des utilisateurs.
+- Rôles d'administrateur et de candidat, avec permissions spécifiques.
 
-## Interface Candidat :
-- Offrir une plateforme conviviale pour que les candidats consultent les offres d'emploi.
-- Implémenter un formulaire d'inscription sécurisé pour les nouveaux candidats.
-- Permettre la soumission de candidatures en ligne avec un suivi en temps réel du statut.
+### Interface Administrateur :
+- Interface de connexion sécurisée pour les recruteurs.
+- Gestion des offres d'emploi : création, modification, suppression.
+- Sécurisation des informations sensibles des recruteurs.
 
-## Fonctionnalités de Recherche Avancée :
-- Intégrer un moteur de recherche avancé pour filtrer par titre, entreprise ou localisation.
-- Utiliser AJAX pour des résultats de recherche instantanés.
+### Interface Candidat :
+- Plateforme conviviale pour la consultation des offres d'emploi.
+- Formulaire d'inscription sécurisé pour les nouveaux candidats.
+- Soumission de candidatures en ligne avec suivi en temps réel.
 
-## Intégration avec un Modèle de Template Existant :
-- Respecter la structure du template existant pour une intégration harmonieuse avec l'identité visuelle de l'entreprise.
-- Assurer une expérience utilisateur cohérente à travers tout le système.
+### Fonctionnalités de Recherche Avancée :
+- Moteur de recherche avancé avec filtres.
+- Utilisation d'AJAX pour des résultats instantanés.
 
-## Fonctionnalités Backend Admin :
-- Gérer les offres d'emploi (opérations CRUD + téléchargement d'image).
-- Créer des descriptions professionnelles (opérations CRUD + téléchargement d'image + TinyMCE).
-- Gérer la visibilité des offres d'emploi (Actif / Inactif).
-- Approuver les demandes d'emploi et envoyer des notifications par mail aux candidats.
+### Intégration avec un Modèle de Template Existant :
+- Adhésion à la structure de template pour une intégration harmonieuse.
+- Expérience utilisateur cohérente sur l'ensemble du système.
 
-## Statistiques pour l'Admin :
-- Visualiser le nombre total d'offres d'emploi.
-- Compter les offres actives et inactives.
-- Suivre le nombre total d'offres approuvées.
+### Fonctionnalités Backend Admin :
+- Gestion des offres d'emploi (CRUD + téléchargement d'image).
+- Création de descriptions professionnelles.
+- Gestion de la visibilité des offres et approbation des demandes d'emploi.
 
-## Partie Front Office :
-- Permettre aux candidats de rechercher des emplois même sans authentification.
-- Nécessiter l'authentification lors de l'étape de candidature à une offre spécifique.
+### Statistiques pour l'Admin :
+- Visualisation des statistiques des offres d'emploi.
 
-## Internationalisation :
-- Mettre en place un système d'internationalisation pour le support multilingue.
-- Ajouter des fichiers de langues pour chaque langue supportée (fonctionnalité bonus).
+### Partie Front Office :
+- Recherche d'emplois accessible sans authentification.
+- Authentification requise lors de la candidature.
+
+### Internationalisation :
+- Système d'internationalisation pour support multilingue.
+
+## Prérequis
+- PHP installé sur votre machine.
+- Composer installé sur votre machine.
+
+## Installation
+1. Cloner le dépôt :
+   ```
+   git clone https://github.com/HMZElidrissi/JobEase.git
+   ```
+2. Naviguer vers le répertoire du projet :
+   ```
+   cd your-repo
+   ```
+3. Installer les dépendances Composer :
+   ```
+   composer install
+   ```
+4. Démarrer le serveur web PHP intégré :
+   ```
+   php -S localhost:8000 -t public
+   ```
