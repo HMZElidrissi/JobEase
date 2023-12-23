@@ -1,4 +1,3 @@
-<!-- view/home.php -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +15,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
-
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark">
@@ -36,32 +34,38 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="#"><?php echo $lang['home']; ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#"><?php echo $lang['features']; ?></a>
                     </li>
 
-                    <li class="nav-item dropdown">
+                    <li class="nav-item">
+                        <a class="nav-link" href="?lang=fr">FR</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="?lang=en">EN</a>
+                    </li>
+
+                    <!--<li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            language
+                            <?php /*echo $lang['language']; */?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">FR</a>
-                            <a class="dropdown-item" href="#">EN</a>
+                            <a class="dropdown-item" href="?lang=fr">FR</a>
+                            <a class="dropdown-item" href="?lang=en">EN</a>
                         </div>
-                    </li>
-                    <span class="nav-item active">
-							<a class="nav-link" href="#">EN</a>
-						</span>
+                    </li>-->
+
                     <li class="nav-item">
                         <?php if (isset($_SESSION['user_id'])) : ?>
                             <form action="/logout" method="post">
                                 <input type="hidden" name="logout">
-                                <button name="logout" type="submit" class="btn btn-primary">Logout</button>
+                                <button name="logout" type="submit" class="btn btn-primary"><?php echo $lang['logout']; ?></button>
                             </form>
                         <?php else : ?>
-                            <a class="nav-link" href="/login">Login</a>
+                            <a class="nav-link" href="/login"><?php echo $lang['login'] ?></a>
                         <?php endif; ?>
                     </li>
                 </ul>
@@ -70,24 +74,23 @@
     </nav>
 </header>
 <section class="search" >
-    <h2>Find Your Dream Job</h2>
+    <h2><?php echo $lang['find_your_dream_job'] ?></h2>
     <form  action="/jobs/search" method="get" class="form-inline">
         <div class="form-group mb-2">
-            <input type="text" id="keywords" placeholder="Keywords">
+            <input type="text" id="keywords" placeholder="<?= $lang['keywords'] ?>">
         </div>
         <div class="form-group mx-sm-3 mb-2">
-            <input type="text" id="location" placeholder="Location">
+            <input type="text" id="location" placeholder="<?= $lang['location'] ?>">
         </div>
         <div class="form-group mx-sm-3 mb-2">
-            <input type="text" id="company" placeholder="Company">
+            <input type="text" id="company" placeholder="<?= $lang['company'] ?>">
         </div>
-        <button type="button" id="searchBtn" class="btn btn-primary mb-2">Search</button>
+        <button type="button" id="searchBtn" class="btn btn-primary mb-2"><?= $lang['search'] ?></button>
     </form>
 </section>
 
-<!--------------------------  card  --------------------->
 <section class="light">
-    <h2 class="text-center py-3">Latest Job Listings</h2>
+    <h2 class="text-center py-3"><?php echo $lang['latest_job_listings']; ?></h2>
     <div class="container py-2" id="results">
         <?php foreach ($jobs as $job): ?>
             <article class="postcard light green">
@@ -121,7 +124,7 @@
                         <form action="/applications/apply" method="post">
                             <input type="hidden" name="job_id" value="<?= $job->id ?>">
                             <button type="submit" name="apply" class="btn btn-primary mt-2">
-                                <?php echo ($applicationController->isApplied($job->id)) ? "APPLIED" : "APPLY NOW"; ?>
+                                <?php echo ($applicationController->isApplied($job->id)) ? $lang['applied'] : $lang['apply_now']; ?>
                             </button>
                         </form>
                     </div>
@@ -132,7 +135,7 @@
 </section>
 
 <footer>
-    <p>© 2023 JobEase </p>
+    <p><?php echo $lang['footer']; ?></p>
 </footer>
 <script src="assets/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
