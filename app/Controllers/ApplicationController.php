@@ -72,4 +72,9 @@ class ApplicationController
     {
         return $this->applicationModel->getApplicationById($id);
     }
+
+    public function getNumberOfApprovedApplications()
+    {
+        return $this->applicationModel->getNumberOfApprovedApplications();
+    }
 }

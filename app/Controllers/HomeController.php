@@ -30,6 +30,13 @@ class HomeController
         if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
             header('Location: /login');
         }
+        $jobController = new JobController();
+        $nbrOfJobs = $jobController->getNumberOfJobs()->nbrOfJobs;
+        $nbrOfActiveJobs = $jobController->getNumberOfActiveJobs()->nbrOfActiveJobs;
+        $nbrOfInactiveJobs = $jobController->getNumberOfInactiveJobs()->nbrOfInactiveJobs;
+        $applicationController = new ApplicationController();
+        $nbrOfApprovedApplications = $applicationController->getNumberOfApprovedApplications()->nbrOfApprovedApplications;
+
         require(__DIR__ .'../../../Views/dashboard.php');
     }
 }

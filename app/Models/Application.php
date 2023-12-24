@@ -47,6 +47,12 @@ class Application
         return $this->db->execute();
     }
 
+    public function getNumberOfApprovedApplications()
+    {
+        $this->db->query("SELECT COUNT(*) AS 'nbrOfApprovedApplications' FROM applications WHERE status = 'Approved'");
+        return $this->db->fetchSingleRecord();
+    }
+
     public function isApplied($jobId)
     {
         $this->db->query("SELECT * FROM applications WHERE job_id = :job_id AND user_id = :user_id");

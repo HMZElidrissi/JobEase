@@ -132,4 +132,19 @@ class JobController
         }
 
     }
+
+    public function getNumberOfJobs()
+    {
+        return $this->jobModel->getNumberOfJobs();
+    }
+
+    public function getNumberOfActiveJobs()
+    {
+        return $this->jobModel->getNumberOfActiveJobs();
+    }
+
+    public function getNumberOfInactiveJobs()
+    {
+        return $this->jobModel->getNumberOfInactiveJobs();
+    }
 }

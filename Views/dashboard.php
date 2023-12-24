@@ -25,14 +25,13 @@
                             <div class="card-body  p-4">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div>
-                                        <p class="mb-0">Offres</p>
+                                        <p class="mb-0">Nombre total d'offres d'emploi</p>
                                         <div class="mt-4">
-                                            <h3><strong>18</strong></h3>
-                                            
+                                            <h3><strong><?= $nbrOfJobs; ?></strong></h3>
                                         </div>
                                     </div>
                                     <div class="cursor">
-                                        <img src="../public/assets/dashboard/img/project-icon-1.svg" alt="icon">
+                                        <img src="assets/dashboard/img/project-icon-1.svg" alt="icon">
                                     </div>
                                 </div>
 
@@ -44,14 +43,14 @@
                             <div class="card-body p-4">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div>
-                                        <p class="mb-0">Active Offres</p>
+                                        <p class="mb-0">Nombre total d'offres actives</p>
                                         <div class="mt-4">
-                                            <h3><strong>132</strong></h3>
+                                            <h3><strong><?= $nbrOfActiveJobs; ?></strong></h3>
                                            
                                         </div>
                                     </div>
                                     <div class="">
-                                        <img src="../public/assets/dashboard/img/project-icon-2.svg" alt="icon">
+                                        <img src="assets/dashboard/img/project-icon-2.svg" alt="icon">
                                     </div>
                                 </div>
 
@@ -63,14 +62,13 @@
                             <div class="card-body p-4">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div>
-                                        <p class="mb-0">Nombre visiteurs</p>
+                                        <p class="mb-0">Nombre total d'offres inactives</p>
                                         <div class="mt-4">
-                                            <h3><strong>12</strong></h3>
-                                            <!-- <p><strong></strong> Completed</p> -->
+                                            <h3><strong><?= $nbrOfInactiveJobs; ?></strong></h3>
                                         </div>
                                     </div>
                                     <div class="">
-                                        <img src="../public/assets/dashboard/img/project-icon-3.svg" alt="icon">
+                                        <img src="assets/dashboard/img/project-icon-3.svg" alt="icon">
                                     </div>
                                 </div>
 
@@ -82,14 +80,13 @@
                             <div class="card-body p-4">
                                 <div class="d-flex justify-content-between px-md-1">
                                     <div>
-                                        <p class="mb-0">Offres approuver</p>
+                                        <p class="mb-0">Nombre total d'offres approuvées</p>
                                         <div class="mt-4">
-                                            <h3><strong>76%</strong></h3>
-                                            <p><strong>57%</strong> Completed</p>
+                                            <h3><strong><?= $nbrOfApprovedApplications; ?></strong></h3>
                                         </div>
                                     </div>
                                     <div class="">
-                                        <img src="../public/assets/dashboard/img/project-icon-4.svg" alt="icon">
+                                        <img src="assets/dashboard/img/project-icon-4.svg" alt="icon">
                                     </div>
                                 </div>
 
@@ -144,22 +141,22 @@
                             <div
                                 class="list-group-item px-3 text d-flex justify-content-between align-items-center p-4">
                                 <p>Create new offre</p>
-                                <img class="cursor " id="add_admin_task" src="../public/assets/dashboard/img/inactive.svg" alt="icon">
+                                <img class="cursor " id="add_admin_task" src="assets/dashboard/img/inactive.svg" alt="icon">
                             </div>
                             <div
                                 class="list-group-item px-3 text d-flex justify-content-between align-items-center p-4">
                                 <p>Finish offre update</p>
-                                <img src="../public/assets/dashboard/img/warning.svg" alt="icon">
+                                <img src="assets/dashboard/img/warning.svg" alt="icon">
                             </div>
                             <div
                                 class="list-group-item px-3 text d-flex justify-content-between align-items-center p-4">
                                 <p>Create new offre example</p>
-                                <img src="../public/assets/dashboard/img/successnew.svg" alt="icon">
+                                <img src="assets/dashboard/img/successnew.svg" alt="icon">
                             </div>
                             <div
                                 class="list-group-item px-3 text d-flex justify-content-between align-items-center p-4">
                                 <p>Update offre report</p>
-                                <img src="../public/assets/dashboard/img/default.svg" alt="icon">
+                                <img src="assets/dashboard/img/default.svg" alt="icon">
                             </div>
                         </div>
                     </div>

@@ -91,4 +91,22 @@ class Job
 
         return $this->db->fetchAllRecords();
     }
+
+    public function getNumberOfJobs()
+    {
+        $this->db->query("SELECT COUNT(*) AS 'nbrOfJobs' FROM jobs");
+        return $this->db->fetchSingleRecord();
+    }
+
+    public function getNumberOfInactiveJobs()
+    {
+        $this->db->query("SELECT COUNT(*) AS 'nbrOfInactiveJobs' FROM jobs WHERE is_active = 0");
+        return $this->db->fetchSingleRecord();
+    }
+
+    public function getNumberOfActiveJobs()
+    {
+        $this->db->query("SELECT COUNT(*) AS 'nbrOfActiveJobs' FROM jobs WHERE is_active = 1");
+        return $this->db->fetchSingleRecord();
+    }
 }
