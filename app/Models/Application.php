@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-use App\Models\Database;
 
 class Application
 {
@@ -9,7 +8,7 @@ class Application
 
     public function __construct()
     {
-        $this->db = Database::getInstance();
+        $this->db = \Database::getInstance();
     }
 
     public function getAllApplications()

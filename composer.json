@@ -2,7 +2,8 @@
     "name": "hamza/job-ease",
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Database\\": "config/"
         }
     },
     "authors": [
