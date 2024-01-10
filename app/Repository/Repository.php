@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use PDO;
+use ReflectionMethod;
 
 class Repository
 {
@@ -28,7 +29,17 @@ class Repository
             
             foreach($setters as $setter)
             {
-                $item->$setter($result[strtolower(str_replace('et','',$setter))]);
+                $r = new ReflectionMethod($item, $setter);
+                $params = $r->getParameters();
+                if ($params[0]->getType() != null && !in_array($params[0]->getType()->getName(), ['int', 'string'])) {
+                    $type = $params[0]->getType();
+                    //TODO: User || App\Models\User
+                    $id = $result[strtolower(str_replace('set','',$setter))];
+                    $m = call_user_func(["{$type}Repository",'findById'],[$id]);
+                    $item->$setter($m);
+                }
+                // array
+                else $item->$setter($result[strtolower(str_replace('set','',$setter))]);
             }
 
             $data[] = $item;

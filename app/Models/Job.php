@@ -6,12 +6,19 @@ use PDO;
 
 class Job
 {
-    private $id;
-    private $title;
-    private $description;
+    private int $id;
+    private string $title;
+    private string $description;
     private $location;
     private $company;
+    #[Simple]
     private $is_active;
+    #[Object]
+    private User $author;
+
+    #[Collection('lazy')]
+    private array $applicants;
+
 
     public function __construct($id = null, $title = null, $description = null, $location = null, $company = null, $is_active = null)
     {
@@ -21,6 +28,16 @@ class Job
         $this->location = $location;
         $this->company = $company;
         $this->is_active = $is_active;
+    }
+
+    public function getAuthorId(): int
+    {
+        return $this->author_id;
+    }
+
+    public function getAuthor(): User
+    {
+        return $this->author;
     }
 
     public function getId()
@@ -83,4 +100,14 @@ class Job
         $this->is_active = $is_active;
     }    
 
+    /*
+    public function setAuthorId($author_id): int
+    {
+        $this->author_id = $author_id; 
+    }*/
+
+    public function setAuthor(User $author)
+    {
+        $this->author = $author;
+    }
 }

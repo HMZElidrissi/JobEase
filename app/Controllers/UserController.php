@@ -11,7 +11,7 @@ class UserController
     public function __construct() {
         $this->userModel = new User();
     }
-
+;
     public function getUsernameById($id)
     {
         return $this->userModel->getUsernameById($id)->username;
