@@ -55,7 +55,7 @@
    ```
 2. Naviguer vers le répertoire du projet :
    ```
-   cd your-repo
+   cd JobEase
    ```
 3. Installer les dépendances Composer :
    ```
